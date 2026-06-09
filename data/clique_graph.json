@@ -1,0 +1,25 @@
+{
+  "user": "alice",
+  "transactions": [
+    { "from": "alice", "to": "bob",   "amount": 150.0, "timestamp": 1700000000 },
+    { "from": "alice", "to": "carol", "amount": 120.0, "timestamp": 1700000100 },
+    { "from": "alice", "to": "dave",  "amount": 130.0, "timestamp": 1700000200 },
+    { "from": "alice", "to": "eve",   "amount": 110.0, "timestamp": 1700000300 },
+    { "from": "bob",   "to": "alice", "amount": 140.0, "timestamp": 1700000400 },
+    { "from": "bob",   "to": "carol", "amount": 90.0,  "timestamp": 1700000500 },
+    { "from": "bob",   "to": "dave",  "amount": 85.0,  "timestamp": 1700000600 },
+    { "from": "bob",   "to": "eve",   "amount": 95.0,  "timestamp": 1700000700 },
+    { "from": "carol", "to": "alice", "amount": 100.0, "timestamp": 1700000800 },
+    { "from": "carol", "to": "bob",   "amount": 80.0,  "timestamp": 1700000900 },
+    { "from": "carol", "to": "dave",  "amount": 70.0,  "timestamp": 1700001000 },
+    { "from": "carol", "to": "eve",   "amount": 75.0,  "timestamp": 1700001100 },
+    { "from": "dave",  "to": "alice", "amount": 110.0, "timestamp": 1700001200 },
+    { "from": "dave",  "to": "bob",   "amount": 65.0,  "timestamp": 1700001300 },
+    { "from": "dave",  "to": "carol", "amount": 60.0,  "timestamp": 1700001400 },
+    { "from": "dave",  "to": "eve",   "amount": 55.0,  "timestamp": 1700001500 },
+    { "from": "eve",   "to": "alice", "amount": 130.0, "timestamp": 1700001600 },
+    { "from": "eve",   "to": "bob",   "amount": 50.0,  "timestamp": 1700001700 },
+    { "from": "eve",   "to": "carol", "amount": 45.0,  "timestamp": 1700001800 },
+    { "from": "eve",   "to": "dave",  "amount": 40.0,  "timestamp": 1700001900 }
+  ]
+}

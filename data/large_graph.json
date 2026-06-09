@@ -1,0 +1,39 @@
+{
+  "user": "alice",
+  "transactions": [
+    { "from": "alice", "to": "b1", "amount": 100.0, "timestamp": 1700000000 },
+    { "from": "alice", "to": "b2", "amount": 200.0, "timestamp": 1700000100 },
+    { "from": "alice", "to": "b3", "amount": 150.0, "timestamp": 1700000200 },
+    { "from": "alice", "to": "b4", "amount": 120.0, "timestamp": 1700000300 },
+    { "from": "alice", "to": "b5", "amount": 180.0, "timestamp": 1700000400 },
+    { "from": "b1", "to": "alice", "amount": 50.0,  "timestamp": 1700000500 },
+
+    { "from": "b1", "to": "c1", "amount": 80.0,  "timestamp": 1700001000 },
+    { "from": "b1", "to": "c2", "amount": 70.0,  "timestamp": 1700001100 },
+    { "from": "b2", "to": "c3", "amount": 90.0,  "timestamp": 1700001200 },
+    { "from": "b2", "to": "c4", "amount": 60.0,  "timestamp": 1700001300 },
+    { "from": "b3", "to": "c5", "amount": 75.0,  "timestamp": 1700001400 },
+    { "from": "b3", "to": "c1", "amount": 55.0,  "timestamp": 1700001500 },
+    { "from": "b4", "to": "c6", "amount": 65.0,  "timestamp": 1700001600 },
+    { "from": "b5", "to": "c7", "amount": 85.0,  "timestamp": 1700001700 },
+    { "from": "b5", "to": "c8", "amount": 45.0,  "timestamp": 1700001800 },
+    { "from": "b1", "to": "b2", "amount": 40.0,  "timestamp": 1700001900 },
+    { "from": "b3", "to": "b4", "amount": 35.0,  "timestamp": 1700002000 },
+
+    { "from": "c1", "to": "d1", "amount": 30.0,  "timestamp": 1700003000 },
+    { "from": "c1", "to": "d2", "amount": 25.0,  "timestamp": 1700003100 },
+    { "from": "c2", "to": "d3", "amount": 20.0,  "timestamp": 1700003200 },
+    { "from": "c3", "to": "d4", "amount": 35.0,  "timestamp": 1700003300 },
+    { "from": "c4", "to": "d5", "amount": 40.0,  "timestamp": 1700003400 },
+    { "from": "c5", "to": "d6", "amount": 15.0,  "timestamp": 1700003500 },
+    { "from": "c6", "to": "d7", "amount": 50.0,  "timestamp": 1700003600 },
+    { "from": "c7", "to": "d8", "amount": 55.0,  "timestamp": 1700003700 },
+    { "from": "c8", "to": "d9", "amount": 10.0,  "timestamp": 1700003800 },
+    { "from": "c1", "to": "c2", "amount": 22.0,  "timestamp": 1700003900 },
+    { "from": "c3", "to": "c4", "amount": 18.0,  "timestamp": 1700004000 },
+
+    { "from": "d1", "to": "e1", "amount": 12.0,  "timestamp": 1700005000 },
+    { "from": "d2", "to": "e2", "amount": 8.0,   "timestamp": 1700005100 },
+    { "from": "d3", "to": "e1", "amount": 14.0,  "timestamp": 1700005200 }
+  ]
+}
