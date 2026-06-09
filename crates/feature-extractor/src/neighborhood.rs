@@ -9,11 +9,7 @@ use crate::graph::{EdgeData, TransactionGraph};
 /// Configuration for k-hop neighborhood extraction.
 #[derive(Debug, Clone)]
 pub struct NeighborhoodConfig {
-    /// Number of hops from the focal user to include. Default: 2.
     pub hops: u32,
-    /// Optional maximum number of neighbors to expand per node per hop.
-    /// When set, keeps the neighbors with the highest total edge weight.
-    /// Prevents blowup on hub nodes (e.g., a merchant with 100K customers).
     pub max_neighbors_per_hop: Option<u32>,
 }
 
@@ -26,12 +22,6 @@ impl Default for NeighborhoodConfig {
     }
 }
 
-/// Extract a k-hop ego subgraph around the focal user.
-///
-/// BFS from the user node out to `config.hops` levels, optionally pruning
-/// low-weight neighbors at each hop. Returns a new `TransactionGraph`
-/// containing only the nodes within the neighborhood and all edges
-/// between them (preserving direction).
 pub fn extract_neighborhood(
     graph: &TransactionGraph,
     config: &NeighborhoodConfig,

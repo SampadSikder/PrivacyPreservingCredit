@@ -13,28 +13,18 @@ pub struct Transaction {
     pub timestamp: u64,
 }
 
-/// Aggregated data for a directed edge between two accounts.
 #[derive(Debug, Clone)]
 pub struct EdgeData {
-    /// Total monetary value across all transactions on this edge.
     pub total_amount: f64,
-    /// Number of individual transactions aggregated into this edge.
     pub tx_count: u32,
 }
 
-/// JSON input format for loading a transaction graph from file.
 #[derive(Debug, Deserialize)]
 pub struct GraphInput {
-    /// The account ID of the focal user whose credit is being scored.
     pub user: String,
-    /// The list of all transactions in the network.
     pub transactions: Vec<Transaction>,
 }
 
-/// A directed transaction graph built on top of petgraph.
-///
-/// Nodes represent account IDs, edges represent aggregated transaction flows.
-/// The graph tracks a "focal user" node — the person whose credit is being evaluated.
 #[derive(Debug, Clone)]
 pub struct TransactionGraph {
     graph: DiGraph<String, EdgeData>,
@@ -44,15 +34,10 @@ pub struct TransactionGraph {
 }
 
 impl TransactionGraph {
-    /// Build a `TransactionGraph` from a list of transactions.
-    ///
-    /// Multiple transactions between the same ordered pair (from, to) are
-    /// aggregated into a single directed edge with accumulated amount and count.
     pub fn from_transactions(user: &str, txs: &[Transaction]) -> Self {
         let mut graph = DiGraph::<String, EdgeData>::new();
         let mut node_map = HashMap::<String, NodeIndex>::new();
 
-        // Helper to get-or-insert a node
         let get_node = |graph: &mut DiGraph<String, EdgeData>,
                             map: &mut HashMap<String, NodeIndex>,
                             id: &str|
@@ -66,14 +51,12 @@ impl TransactionGraph {
             }
         };
 
-        // Ensure the user node exists even if they have no transactions
         let user_node = get_node(&mut graph, &mut node_map, user);
 
         for tx in txs {
             let from = get_node(&mut graph, &mut node_map, &tx.from);
             let to = get_node(&mut graph, &mut node_map, &tx.to);
 
-            // Check if an edge already exists between these two nodes
             if let Some(edge_idx) = graph.find_edge(from, to) {
                 let edge = graph.edge_weight_mut(edge_idx).unwrap();
                 edge.total_amount += tx.amount;
@@ -98,17 +81,6 @@ impl TransactionGraph {
         }
     }
 
-    /// Deserialize a transaction graph from a JSON string.
-    ///
-    /// Expected format:
-    /// ```json
-    /// {
-    ///   "user": "alice",
-    ///   "transactions": [
-    ///     { "from": "alice", "to": "bob", "amount": 100.0, "timestamp": 1700000000 }
-    ///   ]
-    /// }
-    /// ```
     pub fn from_json(json: &str) -> Result<Self, serde_json::Error> {
         let input: GraphInput = serde_json::from_str(json)?;
         Ok(Self::from_transactions(&input.user, &input.transactions))
@@ -164,9 +136,6 @@ impl TransactionGraph {
         &self.node_map
     }
 
-    /// Construct a `TransactionGraph` from pre-built components.
-    ///
-    /// Used internally by neighborhood extraction to build subgraphs.
     pub(crate) fn from_parts(
         graph: DiGraph<String, EdgeData>,
         node_map: HashMap<String, NodeIndex>,

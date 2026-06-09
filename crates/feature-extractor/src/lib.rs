@@ -40,10 +40,6 @@ use petgraph::Direction;
 /// Provides 4 decimal places of precision.
 pub const SCALE_FACTOR: f64 = 10_000.0;
 
-/// The feature vector produced from a user's transaction graph.
-///
-/// Float values suitable for analysis and display. Use `quantize()` to
-/// convert to integer representation for ZKP circuit consumption.
 #[derive(Debug, Clone)]
 pub struct FeatureVector {
     /// Normalized in-degree centrality of the user node in [0, 1].
@@ -66,11 +62,7 @@ pub struct FeatureVector {
     pub neighborhood_size: u32,
 }
 
-/// Integer-quantized feature vector for use inside ZKP arithmetic circuits.
-///
-/// Field elements in ZKP circuits are integers (field elements), so we scale
-/// floating-point features to fixed-point integers by multiplying by
-/// `SCALE_FACTOR` (10,000) and rounding.
+// These are scaled to 10000 for rounding in zkp. No float
 #[derive(Debug, Clone)]
 pub struct QuantizedFeatureVector {
     pub in_degree_centrality: u64,
@@ -85,10 +77,6 @@ pub struct QuantizedFeatureVector {
 }
 
 impl FeatureVector {
-    /// Convert to integer representation for ZKP circuit consumption.
-    ///
-    /// Float fields are multiplied by `SCALE_FACTOR` (10,000) and rounded.
-    /// Integer fields are passed through unchanged.
     pub fn quantize(&self) -> QuantizedFeatureVector {
         QuantizedFeatureVector {
             in_degree_centrality: (self.in_degree_centrality * SCALE_FACTOR).round() as u64,
@@ -139,14 +127,6 @@ impl QuantizedFeatureVector {
     }
 }
 
-/// Extract all features for the focal user from their transaction graph.
-///
-/// Pipeline:
-/// 1. Extract k-hop ego subgraph around the user (bounded by `config`)
-/// 2. Compute centrality metrics on the subgraph
-/// 3. Compute clustering coefficient on the subgraph
-/// 4. Aggregate transaction volume statistics
-/// 5. Return `FeatureVector`
 pub fn extract_features(graph: &TransactionGraph, config: &NeighborhoodConfig) -> FeatureVector {
     // Step 1: Extract k-hop neighborhood
     let subgraph = neighborhood::extract_neighborhood(graph, config);
