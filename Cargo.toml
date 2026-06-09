@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/feature-extractor"]
+resolver = "2"

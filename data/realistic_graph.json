@@ -1,0 +1,22 @@
+{
+  "user": "alice",
+  "transactions": [
+    { "from": "alice", "to": "grocery_store",   "amount": 85.50,  "timestamp": 1700000000 },
+    { "from": "alice", "to": "grocery_store",   "amount": 62.30,  "timestamp": 1700100000 },
+    { "from": "alice", "to": "gas_station",     "amount": 45.00,  "timestamp": 1700200000 },
+    { "from": "alice", "to": "restaurant",      "amount": 32.50,  "timestamp": 1700300000 },
+    { "from": "alice", "to": "online_shop",     "amount": 120.00, "timestamp": 1700400000 },
+    { "from": "alice", "to": "bob",             "amount": 200.00, "timestamp": 1700500000 },
+    { "from": "bob",   "to": "alice",           "amount": 150.00, "timestamp": 1700600000 },
+    { "from": "alice", "to": "carol",           "amount": 75.00,  "timestamp": 1700700000 },
+    { "from": "carol", "to": "alice",           "amount": 80.00,  "timestamp": 1700800000 },
+    { "from": "employer", "to": "alice",        "amount": 3500.00,"timestamp": 1700900000 },
+    { "from": "employer", "to": "alice",        "amount": 3500.00,"timestamp": 1701500000 },
+    { "from": "bob",   "to": "carol",           "amount": 50.00,  "timestamp": 1700950000 },
+    { "from": "carol", "to": "bob",             "amount": 30.00,  "timestamp": 1701000000 },
+    { "from": "bob",   "to": "grocery_store",   "amount": 90.00,  "timestamp": 1701100000 },
+    { "from": "carol", "to": "restaurant",      "amount": 28.00,  "timestamp": 1701200000 },
+    { "from": "alice", "to": "landlord",        "amount": 1200.00,"timestamp": 1701300000 },
+    { "from": "alice", "to": "utility_co",      "amount": 150.00, "timestamp": 1701400000 }
+  ]
+}

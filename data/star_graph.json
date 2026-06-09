@@ -1,0 +1,10 @@
+{
+  "user": "alice",
+  "transactions": [
+    { "from": "alice", "to": "bob",   "amount": 500.0, "timestamp": 1700000000 },
+    { "from": "alice", "to": "carol", "amount": 400.0, "timestamp": 1700001000 },
+    { "from": "alice", "to": "dave",  "amount": 300.0, "timestamp": 1700002000 },
+    { "from": "alice", "to": "eve",   "amount": 200.0, "timestamp": 1700003000 },
+    { "from": "alice", "to": "frank", "amount": 100.0, "timestamp": 1700004000 }
+  ]
+}
